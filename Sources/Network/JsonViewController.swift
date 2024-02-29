@@ -21,7 +21,8 @@ class JsonViewController: UIViewController {
     @IBOutlet weak var textView: CustomTextView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var naviItem: UINavigationItem!
-    
+    @IBOutlet weak var jsonPreview: JSONPreview!
+
     var naviItemTitleLabel: UILabel?
     
     var editType: EditType  = .unknown
@@ -116,18 +117,21 @@ class JsonViewController: UIViewController {
         //setup UI
         if editType == .requestHeader
         {
+            jsonPreview.isHidden = true
             imageView.isHidden = true
             textView.isHidden = false
             textView.text = String(detailModel?.requestHeaderFields?.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"")
         }
         else if editType == .responseHeader
         {
+            jsonPreview.isHidden = true
             imageView.isHidden = true
             textView.isHidden = false
             textView.text = String(detailModel?.responseHeaderFields?.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"")
         }
         else if editType == .log
         {
+            jsonPreview.isHidden = true
             imageView.isHidden = true
             textView.isHidden = false
             naviItemTitleLabel?.text = logTitleString
@@ -140,11 +144,12 @@ class JsonViewController: UIViewController {
         {
             if let content = detailModel?.content {
                 imageView.isHidden = true
-                textView.isHidden = false
-                textView.text = content
-                detectSerializer()//detect format (JSON/Form)
+                jsonPreview.isHidden = false
+                textView.isHidden = true
+                jsonPreview.preview(content, initialState: .folded)
             }
             if let image = detailModel?.image {
+                jsonPreview.isHidden = true
                 textView.isHidden = true
                 imageView.isHidden = false
                 imageView.image = image
