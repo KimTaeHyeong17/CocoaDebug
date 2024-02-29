@@ -108,14 +108,19 @@ class NetworkViewController: UIViewController {
         tableView.delegate = self
         
         //抖动bug
-        tableView.estimatedRowHeight = 0
+        tableView.estimatedRowHeight = 100
         tableView.estimatedSectionHeaderHeight = 0
         tableView.estimatedSectionFooterHeight = 0
-        
+
         searchBar.delegate = self
         searchBar.text = CocoaDebugSettings.shared.networkSearchWord
         searchBar.isHidden = true
-        
+        if #available(iOS 13.0, *) {
+            searchBar.searchTextField.textColor = .black
+            searchBar.searchTextField.spellCheckingType = .no
+            searchBar.searchTextField.autocorrectionType = .no
+        }
+
         //hide searchBar icon
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as! UITextField
         textFieldInsideSearchBar.leftViewMode = .never

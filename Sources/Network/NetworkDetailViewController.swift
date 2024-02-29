@@ -451,9 +451,13 @@ extension NetworkDetailViewController {
                 if content == "" {
                     return 0
                 }
-                //Calculate NSString height
-                let height = content.height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 30))
-                return height + 70
+                if detailModel.title == "RESPONSE" {
+                    return 500
+                } else {
+                    //Calculate NSString height
+                    let height = content.height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 30))
+                    return height + 70
+                }
             }
             return 0
         }
