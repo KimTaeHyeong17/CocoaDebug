@@ -467,7 +467,7 @@ private extension JSONDecorator {
     }
     
     func writeIndent() -> String {
-        return (0 ..< indent).map { _ in "\t" }.joined()
+        return (0 ..< indent).map { _ in "    " }.joined()
     }
 }
 

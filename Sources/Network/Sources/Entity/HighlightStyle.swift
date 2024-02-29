@@ -69,16 +69,3 @@ public extension HighlightStyle {
     /// A darker style scheme that the author likes.
     static let mariana = HighlightStyle(color: .mariana)
 }
-
-fileprivate extension UIImage {
-    convenience init?(name: String) {
-        if let resourcePath = Bundle(for: JSONPreview.self).resourcePath,
-            let bundle = Bundle(path: resourcePath + "JSONPreview.bundle") {
-            
-            self.init(named: name, in: bundle, compatibleWith: nil)
-            
-        } else {
-            self.init(named: name)
-        }
-    }
-}
