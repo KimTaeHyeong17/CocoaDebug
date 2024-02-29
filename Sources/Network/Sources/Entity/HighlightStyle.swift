@@ -31,15 +31,15 @@ public struct HighlightStyle {
         color: HighlightColor = .`default`,
         lineFont: UIFont? = nil,
         jsonFont: UIFont? = nil,
-        lineHeight: CGFloat = 24
+        lineHeight: CGFloat = 10
     ) {
 
         
         self.expandIcon = UIImage(systemName: "chevron.down") ?? UIImage() //#imageLiteral(resourceName: "expand")
         self.foldIcon = UIImage(systemName: "chevron.up") ?? UIImage() //#imageLiteral(resourceName: "fold")
         self.color = color
-        self.lineFont = lineFont ?? UIFont(name:"Helvetica Neue", size: 16)!
-        self.jsonFont = jsonFont ?? UIFont(name:"Helvetica Neue", size: 16)!
+        self.lineFont = lineFont ?? UIFont(name:"Helvetica Neue", size: 10)!
+        self.jsonFont = jsonFont ?? UIFont(name:"Helvetica Neue", size: 10)!
         self.lineHeight = lineHeight
     }
     
